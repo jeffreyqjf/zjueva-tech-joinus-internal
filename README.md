@@ -56,7 +56,258 @@ encrypt = lambda clear, key: "".join([hex(ord(clear[i]) * ord(key[i]))[2:] + '/'
 -   [ZJU Git](https://git.zju.edu.cn/ "ZJU Git")
 -   [Python入门](https://www.runoob.com/python/python-tutorial.html "Python入门")
 
-# 1.原来是拟合 - Pytorch
+# 1. 集装箱? - Docker
+
+Docker是一种容器化技术，可以快速构建、测试和部署应用程序，相比于传统的运维，使用Docker可以解决“为什么在我的机器上跑得起来，在你的机器上不行呢？”等等一系列问题，同时也能够充分利用系统资源。当有一个DockerFile的时候，甚至不用去了解项目就可以部署它，那么，这么好用的东西...
+
+### 你的任务
+-  安装Docker(Windows, Linux都可)
+-  使用Docker启动一个Centos，并截图记录
+-  尝试使用Docker挂载卷，并截图记录
+-  使用Docker启动一个MySQL服务，并映射端口，截图记录
+
+### 一些可能需要用到的命令：
+-  `docker ps`： 列出Docker容器 
+-  `docker run`： 创建并启动一个新的容器
+-  `docker start/stop/restart`： 启动/停止/重启容器
+
+相关的教程可以参考：
+[Docker教程](http://www.dockerinfo.net/document "Docker教程")
+
+# 2. 我来造轮子 - Bash
+
+编写一个bash脚本`search_file.sh`，要求：
+
+-   要求用户输入要搜索的扩展名和要搜索的目录。当用户输入q，程序退出
+
+> 如：
+
+```text
+Please input file extension (q to quit): 
+Please input directory to search (q to quit):
+```
+
+-   根据用户输入的扩展名和目录，递归搜索所有扩展名匹配的文件，将其路径输出到屏幕（绝对/相对路径都可以）。
+-   若文件路径是绝对路径，且以家目录开头，将整个家目录替换成`~`
+
+> 注意：[环境变量](https://zhuanlan.zhihu.com/p/557885534 "环境变量")`$HOME`就是家目录的绝对路径。在终端中，可以用`echo $HOME`查看家目录的绝对路径。在bash脚本中，同样使用`$HOME`来指代家目录的绝对路径。
+
+```text
+$ echo $HOME
+/c/Users/<user name>     # git bash
+/home/<user name>        # linux
+```
+
+> 示例：将以家目录开头的目录替换为\~开头：
+
+```text
+/home/fracher/code/test.c   ->   ~/code/test.c
+```
+
+-   输出一共有多少个文件
+-   从第一步开始重复，直到用户输入q
+
+### 附加要求
+
+-   使输出更加好看，可以在echo时为文本[添加颜色](https://zhuanlan.zhihu.com/p/181609730 "添加颜色")。
+-   此脚本不符合Unix哲学，即一件工具只做一件事。要求使用参数来控制该脚本的行为。仅当参数为`--interactive`时，才进行上面的轮询，否则仅根据参数进行一次搜索。如：
+    ```bash
+    $ ./search_file.sh --extension docx --directory ./Documents
+    ./Documents/file1.docx
+    ./Documents/file2.docx
+    Total 2 files.
+    $ ./search_file.sh --interactive
+    Please input file extension (q to quit): ...
+    Please input directory to search (q to quit): ...
+    ...
+    $ ./search_file.sh --help               # 输出帮助信息
+    search_file.sh is a script to search files in a particular directory.
+    USAGE:
+    search_file.sh [OPTIONS]
+    ... ... ...
+
+    ```
+    注：帮助信息的样例可以参考系统中的命令的帮助信息，如：
+    ```bash
+    $ ls --help
+    $ cp --help
+    ```
+    简单写一点即可，不必过于详细。
+
+### 可以参考的项目
+
+-   Fracher的 [配置文件管理器](https://github.com/FrozenArcher/dotfiles/blob/main/dot "配置文件管理器")
+-   [i3lock-fancy](https://github.com/meskarune/i3lock-fancy/blob/master/i3lock-fancy "i3lock-fancy")
+
+### 另编
+
+Vim之父 Bram Moolenaar 于2023年8月3日去世。让我们深切悼念这位开发者，他为自己的人生写下了最后一句 ":wq"。
+
+# 3. 网页小实践 - Frontend
+
+请制作一个本地网页，实现一些简单的效果。要求如下：
+
+> 功能要求：
+
+-   这个网页有一个文本输入框和一个按钮，按钮上写着“生成”字样
+-   在文本框中输入一个数字，按下“生成”按钮，下方会生成对应数量的小方块，小方块从左至右，从上至下以一定间距排列
+-   左键点击小方块可以消除该小方块，其他小方块顺位排列填补空缺
+-   在已经有生成小方块的情况下点击“生成”按钮，会在原有基础上增加相应数量的小方块
+
+> 外观样式要求：
+
+-   没有硬性要求，当然我们鼓励你按自己想法装饰网页
+
+> 文件组织要求：
+
+-   采用外置的JavaScript脚本和CSS层叠样式表
+-   最终应该提交一个文件夹，内含一个.html文件，.css文件，一个.js文件。
+
+***
+
+样例：
+
+1.  网页刚刚加载&#x20;
+
+![](img/p1_YDG9sgo3rv.png)
+
+1.  在文本框中输入"3"并点击"生成"按钮
+
+![](img/p2_d8lLSjKqx0.png)
+
+1.  左键单击最左侧的小方块&#x20;
+
+![](img/p3_zTbicgK-TB.png)
+
+1.  再次点击"生成"按钮
+
+![](img/p4_Yd9bfVwRC0.png)
+
+***
+
+一些可能有助于完成项目的小提示：
+
+-   小方块的长相和排列方式可以通过修改HTML元素"li"的样式获得
+-   左键小方块使其消失的功能，需要在生成小方块时对每个小方块注册"onclick"事件
+-   你可能需要学习一些基础的HTML、JS、CSS的语法，可以考虑参考[这个网站](https://www.runoob.com/ "这个网站")上的教程
+
+# 4. 204什么情况？- Backend
+
+根据传统，老东西们会在204门口的电闸上贴上一个便利贴，写着“都别动！动会死！”。因为协会在自闭间有三台服务器，其中一台服务器上运行着EVA File、EVA Wiki等各种重要的网络服务。如果断电了，协会的部分网络服务无法正常运行，也有可能会损伤服务器硬件。但是，如果碰到了突发情况，又没有人在204，如何方便得知204服务器运行的状态呢？
+
+我们可以在另一台较可靠的服务器（如云服务器）上搭建一个简单的服务端，并让204的服务器定时向云服务器发送请求。如果云服务器那端验证是204服务器发送过来的请求，那么就更新时间戳。如果过了一定时间（如：5分钟）没有来自204服务器的请求，那么就说明204的服务器可能出了问题，需要去检查情况了。
+
+现在，就请你根据以上描述搭建一个简单的云端监测服务吧！
+
+### 你的任务
+
+在本地搭建一个服务端，并完成以下需求：
+
+| **需求**  | **需求描述**                            | **HTTP路由**      |
+| ------- | ----------------------------------- | --------------- |
+| 检验网络连通性 | 服务端在接收到客户端发来请求后返回成功提示               | `[GET]` /ping   |
+| 更新时间戳   | 服务端在接收到待检测服务器发送的请求后返回更新情况           | `[POST]`/check  |
+| 查询更新时间  | 服务端在接收到客户端发送的服务器名称后返回上一次更新时间、以及是否失联 | `[POST]`/status |
+
+-   **通用格式**：
+    所有的返回值都需要符合以下格式：
+    ```json
+    {
+        "code": 0,       // 错误码，非 0 表示失败
+        "msg": "",       // 错误描述
+        "data":
+          {
+              ...        // 数据主体中的具体内容
+          },
+    }
+    ```
+
+在后续的返回值格式描述中，我们将**略去通用部分**，只描述数据主体（即 data 部分）的格式。
+
+-   `[GET]`/ping
+    **返回值**：
+    ```json
+    {
+        "msg": "pong"
+    }
+    ```
+    
+-   `[POST]`/check
+    **请求体**：
+    ```json
+    {
+        "source": "ZJUEVA204", // 待监测服务器名称，你可以自拟
+    }
+
+    ```
+    **返回体**：
+    ```json
+    {
+        "isChecked": true,     // 是否更新时间戳
+    }
+    ```
+    **可能的错误信息**：
+    1.  服务器未在监测列表内
+        ```json
+        {
+            "code": 100,
+            "msg": "Server not authorized",
+            "data":
+              {
+                  "isChecked": false,
+                  ...
+              },
+        }
+        ```
+    2.  请求未提供服务器名称
+        ```json
+        {
+            "code": 101,
+            "msg": "Should have a server name",
+            ...
+        }
+        ```
+    
+-   `[POST]`/status
+    **请求体**：
+    ```json
+    {
+        "server": "ZJUEVA204", // 待检查服务器名称，你可以自拟
+    }
+    ```
+    **返回体**：
+    ```json
+    {
+        "lastTime": "1984/10/01 11:45:14", // 按照"yyyy/mm/dd hh:mm:ss"的格式返回
+        "isDisconnected": true,            // 是否失联
+        "hitokoto": "你好呀，祝你满绩每一天"  // （选做）一言 API 返回的语句
+    }
+    ```
+    不要求错误处理。
+
+    你可以适当减少监测间隔时长以方便调试。
+
+### 附加题
+
+- 将服务器名称链接数据库，形式不限，数据自拟即可。
+- 当访问`/status`路由时从一言API拉取语句数据再发送给客户端，你可能要再自拟一些错误情况处理。
+
+### 一些需要注意的事
+
+本题不做语言限制，你可以用任何你喜欢的编程语言完成这一题。如果你没有头绪的话，可以试试
+Go的Gin框架，或者Nodejs的express包，Python与C#也是一个不错的选择。~~C++也不是不行~~
+服务只需要在本地运行，不必上传至服务器，提交时提交源码即可。
+
+### 参考资料
+
+-   [Nodejs](https://nodejs.org/en/docs/ "Nodejs")
+-   [Express](https://expressjs.com/ "Express")
+-   [The Little Go Book](https://www.openmymind.net/assets/go/go.pdf "The Little Go Book")
+-   [Gin](https://gin-gonic.com/ "Gin")
+-   [What is Hypertext Transfer Protocol (HTTP)](https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol "What is Hypertext Transfer Protocol (HTTP)")
+-   [HTTP Tutorial](https://www.runoob.com/http/http-tutorial.html "HTTP Tutorial")
+
+# 5.原来是拟合 - Pytorch
 在大家写实验报告的时候不可避免的会遇到拟合实验数据的曲线，小钱同学由于不会使用Excel拟合曲线，导致每次实验报告都被打低分。他下定决心要找出能最好拟合实验数据的曲线，于是他想到了神经网络...
 
 ### 你的任务
@@ -73,7 +324,7 @@ encrypt = lambda clear, key: "".join([hex(ord(clear[i]) * ord(key[i]))[2:] + '/'
 1. 训练一个卷积神经网络，数据集为MINST数据集（需自行下载），识别的准确率需要达到80%以上，提供内容同上，将原来训练效果的图片改为准确率的截图。
 2. 试试不依赖神经网络, 编写 Python 代码用传统的统计方法拟合实验数据, 并讨论一下这种方法与使用神经网络进行拟合的区别。
 
-# 2.网络蜘蛛侠 - spider
+# 6.网络蜘蛛侠 - spider
 小钱同学是一个医学专业的小e，很多时候需要搜索文献，但是人工手动搜索文献效率太低了，小钱同学就想着能不能通过一个自动程序来将相关的搜索结果以 **文献标题：文献链接** 保存为为一个.txt的文件中。
 
 ### 你的任务
@@ -94,3 +345,11 @@ A CAR enhancer increases the activity and persistence of CAR T cells : https://w
 ### 附加题
 1. 实现从一页相关的搜索结果拓展到10页，将10页中的`文献标题：文献链接`内容都下载下来。
 2. 实现不仅仅只获取文献链接，将文献链接所指的PDF也下载到本地。
+
+# X. 喜欢您来 - And You
+
+感谢你看到这里！
+
+如果你有什么觉得足够有趣，并且实现难度等同或超过上述题目的项目，我们也非常欢迎你自行提交项目仓库链接与项目说明。
+
+期待你的表现！
