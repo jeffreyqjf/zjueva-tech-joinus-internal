@@ -374,6 +374,23 @@ A CAR enhancer increases the activity and persistence of CAR T cells : https://w
 [菜鸟教程](https://www.runoob.com/w3cnote/nginx-setup-intro.html "菜鸟教程")\
 [官方文档](https://nginx.org/en/docs/ "官方文档")
 
+# 8.看不懂的字符就是让人觉得很奇怪啦 - misc
+
+王同学在协会自闭间自闭的时候，屏幕上突然出现了一行字母：
+
+`RVZBe1czMWMwbUVfVG9fekp1RVY0X1QzY2hAPz8/Pz99Ck1ENTo5NDY4NkM1N0U1MTIzNDkyOEIzNDQ5MjRGOTkyRDlDOQ==`
+
+王同学感到好疑惑，但又感觉结尾的`=`有点眼熟，好像他学过的某种算法。
+
+### 你的任务：
+
+通过对上面这段字符作适当的处理，你可以得到一段有意义的字符，大致如`ZJUEVA{xxxxxxx}`的形式。请确保最后的结果不包含`?`，处理方法不限，如果你在解题过程中使用了任何工具，请将使用的工具（网站、代码）放到你的解题文档当中（如果是网站的话请截图解题过程，如果是代码的话直接贴到文档里即可）。
+
+### 提示：
+
+1. 注意结尾的`=`，这是一个很明显的标志。
+2. 我会推荐你使用python来解决这一道题。
+
 # X. 喜欢您来 - And You
 
 感谢你看到这里！
