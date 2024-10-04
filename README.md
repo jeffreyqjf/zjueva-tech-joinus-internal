@@ -62,7 +62,7 @@ Docker是一种容器化技术，可以快速构建、测试和部署应用程�
 
 ### 你的任务
 -  安装Docker(Windows, Linux都可)
--  使用Docker启动一个Centos，并截图记录
+-  使用Docker启动一个centos，并截图记录
 -  尝试使用Docker挂载卷，并截图记录
 -  使用Docker启动一个MySQL服务，并映射端口，截图记录
 
@@ -308,26 +308,33 @@ Go的Gin框架，或者Nodejs的express包，Python与C#也是一个不错的选
 -   [HTTP Tutorial](https://www.runoob.com/http/http-tutorial.html "HTTP Tutorial")
 
 # 5.原来是拟合 - Pytorch
+
 在大家写实验报告的时候不可避免的会遇到拟合实验数据的曲线，小钱同学由于不会使用Excel拟合曲线，导致每次实验报告都被打低分。他下定决心要找出能最好拟合实验数据的曲线，于是他想到了神经网络...
 
 ### 你的任务
+
 现在，请你使用pytorch设计并训练一个神经网络，可以拟合实验数据的一系列点，例如符合 `y = 3x ± 0.5` 分布的一系列散列的点，要求：
 
 -  需要提供训练代码和神经网络的模型结构代码，并将训练完成的模型保存为xx.pt的文件附在一起提交。
 -  需要提供神经网络在你所选定的一个线性或非线性的函数上的最终训练效果的图片，即数据点和曲线绘制在一张图上（建议使用matplotlib等绘图工具）。
 
 ### 一些可能有助于完成项目的小提示：
+
 -  本次任务并不需要用到卷积（Convolution），池化（Pooling）等操作，需要的仅仅是线性层（Linear）和激活函数。
 -  pytorch简单入门可以参考这个文章：
 [https://pytorch.ac.cn/tutorials/beginner/basics/intro.html](https://pytorch.ac.cn/tutorials/beginner/basics/intro.html "https://pytorch.ac.cn/tutorials/beginner/basics/intro.html")
+
 ### 附加题
+
 1. 训练一个卷积神经网络，数据集为MINST数据集（需自行下载），识别的准确率需要达到80%以上，提供内容同上，将原来训练效果的图片改为准确率的截图。
 2. 试试不依赖神经网络, 编写 Python 代码用传统的统计方法拟合实验数据, 并讨论一下这种方法与使用神经网络进行拟合的区别。
 
 # 6.网络蜘蛛侠 - spider
+
 小钱同学是一个医学专业的小e，很多时候需要搜索文献，但是人工手动搜索文献效率太低了，小钱同学就想着能不能通过一个自动程序来将相关的搜索结果以 **文献标题：文献链接** 保存为为一个.txt的文件中。
 
 ### 你的任务
+
 -  将[Nature](https://www.nature.com/ "Nature")上的文章的文献标题和文献链接保存下来，比如 
 ```text
 Fratricide-resistant CD7-CAR T cells in T-ALL : https://www.nature.com/articles/s41591-024-03228-8
@@ -338,13 +345,34 @@ A CAR enhancer increases the activity and persistence of CAR T cells : https://w
 -  你所需要提交的包括一个.txt文件和相应的源代码（建议使用python）。
 
 ### 一些可能有助于完成项目的小提示：
+
 -  某些网站可能存在反爬虫的策略，为了更好的得到数据，可以使用chromedriver + python中的`selenium`包 来模仿用户行为，selenium相关教程可以参考[这个网站](https://selenium-python-zh.readthedocs.io/en/latest/getting-started.html "这个网站")。
 -  Nature的web源代码可能比较多，可以在查看网页源代码的同时使用ctrl + F 来搜索自己感兴趣的的地方（比如网址）。
 -  在page source 中获取自己感兴趣的内容（文献标题与文献链接），可以使用 `BeautifulSoup` 包来解析，也可以使用正则表达式来匹配，BeautifulSoup相关教程可以参考[这个网站](https://beautifulsoup.readthedocs.io/zh-cn/v4.4.0/ "这个网站").
 
 ### 附加题
+
 1. 实现从一页相关的搜索结果拓展到10页，将10页中的`文献标题：文献链接`内容都下载下来。
 2. 实现不仅仅只获取文献链接，将文献链接所指的PDF也下载到本地。
+
+# 7. 今天你加密了吗？ - NGINX
+
+不少 Web 项目为了降低代码复杂度或是便于维护, 会避免在项目源码中支持 HTTPS (SSL/TLS 加密)。为了安全地提供服务，我们一般会使用带有 HTTPS 的反向代理。
+你的任务是为知名的 Web 服务器/反向代理软件 NGINX 编写配置文件片段(具体地说，是一个 server 块)，让 NGINX 将访问本机 443 端口的 HTTPS 流量反向代理到 http://localhost:12345
+请提交相应的配置文件片段。
+
+### 附加题：
+1. 为你的反向代理配置 HSTS，并将访问本机 80 端口的 HTTP 请求重定向到 443 端口上的 HTTPS 服务器
+2. 修改配置文件，禁用已经并不安全的加密/摘要算法
+
+### 提示：
+
+1. 你不需要提供 SSL 证书，对于测试用途，你可以选择创建一张自签名证书，也可以使用 let's encrypt 等服务(假如你有一个域名)
+2. 测试时被反代的域名可以自行选择(比如 zdbk.zju.edu.cn)，但你提交的配置文件中应当正确配置为题目中提到的地址
+
+可能有帮助的教程:\
+[菜鸟教程](https://www.runoob.com/w3cnote/nginx-setup-intro.html "菜鸟教程")\
+[官方文档](https://nginx.org/en/docs/ "官方文档")
 
 # X. 喜欢您来 - And You
 
