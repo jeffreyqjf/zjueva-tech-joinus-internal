@@ -169,19 +169,19 @@ Vim之父 Bram Moolenaar 于2023年8月3日去世。让我们深切悼念这位�
 
 1.  网页刚刚加载&#x20;
 
-![](img/p1_YDG9sgo3rv.png)
+![](https://github.com/jeffreyqjf/zjueva-tech-joinus-internal/blob/master/img/p1_YDG9sgo3rv.png)
 
 1.  在文本框中输入"3"并点击"生成"按钮
 
-![](img/p2_d8lLSjKqx0.png)
+![](https://github.com/jeffreyqjf/zjueva-tech-joinus-internal/blob/master/img/p2_d8lLSjKqx0.png)
 
 1.  左键单击最左侧的小方块&#x20;
 
-![](img/p3_zTbicgK-TB.png)
+![](https://github.com/jeffreyqjf/zjueva-tech-joinus-internal/blob/master/img/p3_zTbicgK-TB.png)
 
 1.  再次点击"生成"按钮
 
-![](img/p4_Yd9bfVwRC0.png)
+![](https://github.com/jeffreyqjf/zjueva-tech-joinus-internal/blob/master/img/p4_Yd9bfVwRC0.png)
 
 ***
 
